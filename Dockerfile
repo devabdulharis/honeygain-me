@@ -1,5 +1,5 @@
 # Gunakan image dasar Honeygain
 FROM honeygain/honeygain:latest
 
-# Jalankan Honeygain langsung dengan email, password, dan parameter lainnya
-CMD ["honeygain", "-tou-accept", "true", "-email", "harizdev@yandex.com", "-pass", "Harizdev123@", "-device", "Linux"]
+# Jalankan perintah Honeygain dengan parameter -tou-accept true
+ENTRYPOINT ["honeygain", "-tou-accept", "true", "-email", "harizdev@yandex.com", "-pass", "Harizdev123@", "-device", "Linux"]
