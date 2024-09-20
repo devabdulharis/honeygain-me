@@ -1,11 +1,9 @@
-# Gunakan image dasar Honeygain
 FROM honeygain/honeygain:latest
 
-# Install netcat (atau gunakan alternatif) untuk membuat dummy server
-RUN apt-get update && apt-get install -y netcat
+# Set environment variables
+ENV HONEYGAIN_EMAIL=dev.abdulharis@gmail.com
+ENV HONEYGAIN_PASSWORD=Harizdev123@
+ENV HONEYGAIN_DEVICE=KOYEB
 
-# Set environment variable for PORT (Koyeb requires this for web services)
-ENV PORT=8080
-
-# Jalankan Honeygain di latar belakang, lalu jalankan dummy server di port yang diharapkan Koyeb
-CMD ["sh", "-c", "honeygain -tou-accept true -email harizdev@yandex.com -pass Harizdev123@ -device Linux & while true; do echo 'Honeygain is running' | nc -l -p $PORT; done"]
+# Menjalankan Honeygain dengan skrip shell untuk menjaga agar kontainer tetap berjalan
+CMD ["sh", "-c", "./honeygain -tou-accept -email $HONEYGAIN_EMAIL -pass $HONEYGAIN_PASSWORD -device $HONEYGAIN_DEVICE && tail -f /dev/null"]
