@@ -9,6 +9,3 @@ ENV HONEYGAIN_DEVICE=KOYEB
 RUN echo '#!/bin/sh\n\
 ./honeygain -tou-accept -email "$HONEYGAIN_EMAIL" -pass "$HONEYGAIN_PASSWORD" -device "$HONEYGAIN_DEVICE"' > /entrypoint.sh && \
     chmod +x /entrypoint.sh
-
-# Menjalankan skrip entrypoint
-CMD ["/entrypoint.sh"]
